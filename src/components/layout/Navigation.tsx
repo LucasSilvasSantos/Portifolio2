@@ -33,7 +33,7 @@ export const Navigation = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#home" className="text-xl font-semibold gradient-text">
-          &lt;Dev /&gt;
+          Portifolio Lucas 
         </a>
 
         {/* Desktop Navigation */}

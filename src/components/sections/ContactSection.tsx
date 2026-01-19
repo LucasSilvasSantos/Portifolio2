@@ -6,20 +6,20 @@ const contactLinks = [
   {
     name: "GitHub",
     icon: Github,
-    href: "https://github.com",
+    href: "https://github.com/LucasSilvasSantos",
     description: "Código e projetos open source",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/lucas-silva-santos10/",
     description: "Perfil profissional",
   },
   {
     name: "E-mail",
     icon: Mail,
-    href: "mailto:contato@exemplo.com",
-    description: "contato@exemplo.com",
+    href: "lucsantos820@gmail.com",
+    description: "lucsantos820@gmail.com",
   },
 ];
 
