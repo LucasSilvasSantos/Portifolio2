@@ -1,31 +1,42 @@
+// importa componentes do framer-motion para animações e hook para detectar se um elemento está na viewport
 import { motion, useInView } from "framer-motion";
+// importa hooks do React: useRef para referenciar elementos DOM e useState para estado local
 import { useRef, useState } from "react";
+// importa ícones usados no componente a partir da biblioteca lucide-react
 import { ExternalLink, Github, X, Layers, Lightbulb, Wrench, ChevronRight } from "lucide-react";
+// importa a lista de projetos (dados) do diretório de dados
 import { projects } from "@/data/projects";
+// importa o tipo TypeScript `Project` para tipagem das props
 import { Project } from "@/types";
 
+// componente modal que mostra os detalhes de um projeto
 const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => void }) => {
+  // retorna JSX do modal usando `motion` para animações de entrada/saída
   return (
+    // camada de fundo do modal (overlay) com animação de opacidade
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm"
-      onClick={onClose}
+      initial={{ opacity: 0 }} // estado inicial: transparente
+      animate={{ opacity: 1 }} // animação quando montado: opaco
+      exit={{ opacity: 0 }} // animação de saída: volta a transparente
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm" // estilos: cobre a tela inteira
+      onClick={onClose} // fecha o modal quando clicar no overlay
     >
+      {/* container interno do modal com animação de escala */}
       <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.9, opacity: 0 }}
-        className="glass-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
+        initial={{ scale: 0.9, opacity: 0 }} // inicia reduzido e invisível
+        animate={{ scale: 1, opacity: 1 }} // anima para tamanho normal e visível
+        exit={{ scale: 0.9, opacity: 0 }} // anima de saída
+        className="glass-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto" // cartão central responsivo
+        onClick={(e) => e.stopPropagation()} // impede que clique no conteúdo feche o modal
       >
-        <div className="p-8">
-          {/* Header */}
+        <div className="p-8"> {/* padding do conteúdo */}
+          {/* Header do modal com título, status e botão de fechar */}
           <div className="flex items-start justify-between mb-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
+                {/* título do projeto */}
                 <h3 className="text-2xl font-bold">{project.title}</h3>
+                {/* badge de status (Finalizado / Em andamento etc.) */}
                 <span
                   className={`text-xs px-3 py-1 rounded-full ${
                     project.status === "Finalizado"
@@ -36,6 +47,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
                   {project.status}
                 </span>
               </div>
+              {/* lista de tecnologias do projeto */}
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (
                   <span key={tech} className="text-xs text-muted-foreground code-font">
@@ -44,6 +56,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
                 ))}
               </div>
             </div>
+            {/* botão para fechar o modal */}
             <button
               onClick={onClose}
               className="p-2 hover:bg-secondary rounded-lg transition-colors"
@@ -52,10 +65,12 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
             </button>
           </div>
 
-          {/* Content */}
+          {/* Conteúdo principal do modal (descrição, problema, solução, arquitetura, desafios) */}
           <div className="space-y-6">
+            {/* descrição completa */}
             <p className="text-muted-foreground">{project.fullDescription}</p>
 
+            {/* bloco: problema */}
             <div className="glass-card p-5 rounded-xl">
               <div className="flex items-center gap-2 text-primary mb-3">
                 <Lightbulb size={18} />
@@ -64,6 +79,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
               <p className="text-sm text-muted-foreground">{project.problem}</p>
             </div>
 
+            {/* bloco: solução */}
             <div className="glass-card p-5 rounded-xl">
               <div className="flex items-center gap-2 text-primary mb-3">
                 <Wrench size={18} />
@@ -72,6 +88,7 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
               <p className="text-sm text-muted-foreground">{project.solution}</p>
             </div>
 
+            {/* bloco: arquitetura */}
             <div className="glass-card p-5 rounded-xl">
               <div className="flex items-center gap-2 text-primary mb-3">
                 <Layers size={18} />
@@ -80,12 +97,13 @@ const ProjectModal = ({ project, onClose }: { project: Project; onClose: () => v
               <p className="text-sm text-muted-foreground">{project.architecture}</p>
             </div>
 
+            {/* bloco: desafios e como foram resolvidos */}
             <div className="glass-card p-5 rounded-xl">
               <h4 className="font-semibold mb-3">Desafios & Soluções</h4>
               <p className="text-sm text-muted-foreground">{project.challenges}</p>
             </div>
 
-            {/* Links */}
+            {/* Links externos: repositório e site ao vivo (se existirem) */}
             <div className="flex gap-4 pt-4">
               {project.githubUrl && (
                 <a
