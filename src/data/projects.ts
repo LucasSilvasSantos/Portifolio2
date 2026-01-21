@@ -2,19 +2,35 @@ import { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    id: 1,
-    title: "Sistema de Gestão Empresarial",
-    shortDescription: "Plataforma web completa para gerenciamento de processos internos e análise de dados.",
-    fullDescription: "Sistema modular desenvolvido para otimizar operações empresariais, incluindo módulos de vendas, estoque, financeiro e relatórios analíticos. Interface intuitiva com dashboards em tempo real.",
-    technologies: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "Docker"],
-    status: "Finalizado",
-    problem: "Empresa enfrentava dificuldades com processos manuais e dispersos em múltiplas ferramentas, resultando em perda de dados e ineficiência operacional.",
-    solution: "Desenvolvimento de uma plataforma unificada com automação de processos, integração de dados e dashboards para tomada de decisão.",
-    architecture: "Arquitetura monolítica modular com separação clara de responsabilidades. API RESTful, banco de dados relacional e cache distribuído para otimização.",
-    challenges: "Migração de dados legados, integração com sistemas existentes e garantia de alta disponibilidade durante a transição.",
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
-  },
+  id: 1,
+  title: "TimeAwards",
+  shortDescription: "Plataforma web inteligente para monitoramento de desempenho, reconhecimento de colaboradores e apoio à tomada de decisão.",
+  fullDescription: "Sistema web desenvolvido com arquitetura backend em Java utilizando Spark Framework, integrado a banco de dados PostgreSQL na Azure. A plataforma permite o acompanhamento de desempenho, geração de relatórios visuais e reconhecimento de colaboradores. Conta ainda com recursos de inteligência artificial para análise de dados, OCR e interação por voz, além de dashboards interativos voltados à gestão.",
+  technologies: [
+    "Java 25",
+    "Spark Framework",
+    "PostgreSQL",
+    "Maven",
+    "HTML5",
+    "CSS3",
+    "JavaScript ES6+",
+    "jQuery",
+    "Bootstrap",
+    "Chart.js",
+    "Azure OpenAI GPT-4o",
+    "Tesseract.js",
+    "Web Speech API",
+    "Azure Cloud"
+  ],
+  status: "Finalizado",
+  problem: "A falta de uma solução centralizada dificultava o acompanhamento de desempenho, a visualização de métricas e o reconhecimento eficiente de colaboradores, tornando a tomada de decisão mais lenta e menos assertiva.",
+  solution: "Desenvolvimento de uma plataforma web integrada que centraliza dados, automatiza análises, gera relatórios visuais e utiliza inteligência artificial para enriquecer a interpretação das informações.",
+  architecture: "Arquitetura cliente-servidor com backend em Java (Spark Framework), API REST, persistência em PostgreSQL na Azure e frontend desacoplado. Integração com serviços de IA e recursos de automação em nuvem.",
+  challenges: "Integração entre backend Java e frontend web, uso de serviços de IA em ambiente cloud, configuração de infraestrutura Azure, segurança no acesso aos dados e organização do projeto em equipe.",
+  githubUrl: "https://github.com/LucasSilvasSantos/TimeAwards",
+  liveUrl: ""
+},
+
   {
     id: 2,
     title: "API de Processamento de Dados",
