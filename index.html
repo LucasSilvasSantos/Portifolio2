@@ -1,25 +1,952 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portifolio Lucas </title>
-    <meta name="description" content="Desenvolvedor de software especializado em soluções web de alta qualidade. Experiência com JavaScript, TypeScript, Node.js, Next.js, Java e mais." />
-    <meta name="author" content="Developer" />
-    <meta name="keywords" content="desenvolvedor, full stack, web, software, javascript, typescript, node.js, react, next.js" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Santos — Desenvolvedor Full Stack</title>
+<meta name="description" content="Portfólio de Lucas Santos, desenvolvedor full stack. Projetos em produção com React, Node.js, TypeScript e mais.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+<style>
+  :root{
+    --navy: #0b1a54;
+    --navy-deep: #071238;
+    --ink: #060b24;
+    --cream: #d8c8b8;
+    --cream-soft: #e9ddd0;
+    --white: #ffffff;
+    --muted: #a7b1d9;
+    --muted-dim: #6b76a6;
+    --display: 'Impact', 'Anton', 'Arial Narrow Bold', sans-serif;
+    --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+    --container: 1200px;
+    --ease: cubic-bezier(.16,1,.3,1);
+  }
 
-    <meta property="og:title" content="Desenvolvedor Full Stack | Portfólio" />
-    <meta property="og:description" content="Desenvolvimento de soluções digitais com foco em qualidade e performance." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/placeholder.svg" />
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    font-family: var(--body);
+    background: var(--navy-deep);
+    color: var(--white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, video{ max-width: 100%; display:block; }
+  a{ color: inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  section{ position: relative; }
+  .wrap{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  :focus-visible{
+    outline: 2px solid var(--cream);
+    outline-offset: 3px;
+  }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Developer" />
-    <meta name="twitter:image" content="/placeholder.svg" />
-  </head>
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    height: 100vh;
+    min-height: 560px;
+    width: 100%;
+    overflow: hidden;
+    background: var(--navy);
+  }
+  .hero video{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(6,11,36,0.15) 0%, rgba(6,11,36,0) 35%, rgba(6,11,36,0.55) 100%);
+    pointer-events:none;
+  }
+  .hero-top{
+    position: absolute;
+    top: 0; left:0; right:0;
+    z-index: 5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 24px;
+    padding: 28px 32px;
+  }
+  .logo{
+    color: var(--white);
+    font-family: var(--display);
+    font-size: clamp(18px, 2.4vw, 24px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    white-space: nowrap;
+  }
+  .logo sup{ font-size: 11px; opacity:.7; }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-left: auto;
+    margin-right: 48px;
+  }
+  .nav-links a{
+    position: relative;
+    padding-bottom: 3px;
+    transition: color .3s var(--ease);
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width: 100%;
+    height: 1px;
+    background: var(--white);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .35s var(--ease);
+  }
+  .nav-links a:hover{ color: var(--white); }
+  .nav-links a:hover::after{ transform: scaleX(1); transform-origin: left; }
+  .nav-links span{ color: rgba(255,255,255,0.28); }
+
+  .btn-hero{
+    flex-shrink:0;
+    background: rgba(255,255,255,0.96);
+    color: var(--ink);
+    border: none;
+    border-radius: 999px;
+    padding: 11px 22px;
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform .3s var(--ease), background .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .btn-hero:hover{
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+  }
+  .btn-hero:active{ transform: translateY(0) scale(.96); box-shadow: none; }
+
+  .hero-bottom{
+    position:absolute;
+    left:0; right:0; bottom: 0;
+    z-index: 5;
+    padding: 0 32px 44px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 24px;
+  }
+  .hero-name{
+    color: var(--white);
+    font-family: var(--display);
+    text-transform: uppercase;
+    line-height: .88;
+    font-size: clamp(52px, 11vw, 132px);
+    letter-spacing: 0.5px;
+  }
+  .hero-role{
+    text-align:right;
+    color: var(--cream-soft);
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: clamp(14px, 1.6vw, 18px);
+    line-height: 1.35;
+    padding-bottom: 10px;
+  }
+  .hero-role span{
+    display:block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted-dim);
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 760px){
+    .nav-links{ display:none; }
+    .hero-bottom{ flex-direction:column; align-items:flex-start; gap: 14px; }
+    .hero-role{ text-align:left; }
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 28px;
+    height: 1px;
+    background: var(--cream);
+    display:inline-block;
+  }
+  .section-title{
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.02;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 0.5px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background: var(--navy);
+    padding: 120px 0;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items:start;
+  }
+  .about p{
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 46ch;
+    margin-top: 22px;
+  }
+  .about p + p{ margin-top: 14px; }
+  .chip-row{
+    margin-top: 36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px;
+  }
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--cream-soft);
+    border: 1px solid rgba(216,200,184,0.35);
+    border-radius: 999px;
+    padding: 7px 16px 7px 12px;
+    transition: transform .35s var(--ease), border-color .35s var(--ease), background-color .35s var(--ease);
+  }
+  .chip:hover{
+    transform: translateY(-3px);
+    border-color: var(--cream);
+    background: rgba(216,200,184,0.07);
+  }
+  .chip i{ font-size: 15px; line-height:1; }
+  .chip i.icon-dark{
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 11px;
+  }
+  .about-card{
+    background: var(--navy-deep);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px;
+    font-family: var(--mono);
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .about-card .card-tab{
+    font-size: 11px;
+    color: var(--muted-dim);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255,255,255,0.12);
+  }
+  .about-card ul li{ margin-bottom: 10px; display:flex; gap:10px; }
+  .about-card ul li span:first-child{ color: var(--cream); }
+
+  /* ---------- JOURNEY ---------- */
+  .journey{
+    background: var(--navy);
+    padding: 120px 0 100px;
+    overflow: hidden;
+  }
+  .journey .section-title{ margin-bottom: 64px; }
+  .journey-road{
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    aspect-ratio: 800 / 1560;
+  }
+  .journey-svg{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .road-guide{
+    fill: none;
+    stroke: rgba(255,255,255,0.12);
+    stroke-width: 50;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .road-fill{
+    fill: none;
+    stroke: var(--cream);
+    stroke-width: 50;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dashoffset .1s linear;
+  }
+  .milestone{
+    position: absolute;
+    width: 46%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .milestone.side-right.reveal{ transform: translate(0, calc(-50% + 28px)); flex-direction: row; text-align: left; }
+  .milestone.side-left.reveal{ transform: translate(-100%, calc(-50% + 28px)); flex-direction: row-reverse; text-align: right; }
+  .milestone.side-right.reveal.is-visible{ transform: translate(0, -50%); }
+  .milestone.side-left.reveal.is-visible{ transform: translate(-100%, -50%); }
+  .m-icon{
+    flex-shrink: 0;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(160deg, #ddcab4, #c7ae90);
+    position: relative;
+    box-shadow: 0 10px 24px rgba(3,7,26,0.5), 0 0 0 6px var(--navy);
+  }
+  .m-icon::before{
+    content:"";
+    position:absolute;
+    top: -14%;
+    left:50%;
+    transform: translateX(-50%);
+    width: 82%;
+    height: 62%;
+    background: var(--ink);
+    border-radius: 50% 50% 40% 40% / 60% 60% 30% 30%;
+    z-index: 1;
+  }
+  .m-icon::after{
+    content:"";
+    position:absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68%;
+    height: 26%;
+    background: var(--ink);
+    border-radius: 999px;
+    z-index: 2;
+  }
+  .m-glints{
+    position:absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    height: 24%;
+    display:flex;
+    justify-content: space-between;
+    z-index: 3;
+  }
+  .m-glints span{
+    width: 34%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--cream-soft);
+    align-self: center;
+  }
+  .m-text .m-date{
+    display:block;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .m-text h3{
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .m-text p{
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 700px){
+    .journey-road{ aspect-ratio: 800 / 2100; }
+    .milestone{ width: 84%; left: 50% !important; }
+    .milestone.side-right, .milestone.side-left{
+      transform: translate(-50%, -50%) !important;
+      flex-direction: row;
+      text-align: left;
+    }
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{
+    background: var(--navy-deep);
+    padding: 120px 0;
+  }
+  .projects .section-title{ margin-bottom: 56px; }
+  .project-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .project-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0));
+    background-color: var(--navy);
+    border-radius: 18px;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
+    display:flex;
+    flex-direction:column;
+  }
+  .project-card.reveal:hover{
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(216,200,184,0.45);
+    box-shadow: 0 24px 48px rgba(3,7,26,0.45);
+  }
+  .project-tab{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted-dim);
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display:flex;
+    justify-content:space-between;
+  }
+  .project-thumb{
+    height: 170px;
+    position:relative;
+    overflow:hidden;
+    background: var(--navy-deep);
+  }
+  .project-thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform .5s ease;
+  }
+  .project-card:hover .project-thumb img{ transform: scale(1.06); }
+  .project-thumb::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(6,11,36,0) 55%, rgba(6,11,36,0.35) 100%);
+    pointer-events:none;
+  }
+  .project-body{ padding: 22px; flex:1; display:flex; flex-direction:column; }
+  .project-body h3{
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .project-body p{
+    color: var(--muted);
+    font-size: 14.5px;
+    flex:1;
+  }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin: 14px 0; }
+  .tag-row span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cream-soft);
+    background: rgba(216,200,184,0.08);
+    padding: 4px 10px 4px 8px;
+    border-radius: 6px;
+    transition: background-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .tag-row span:hover{
+    background: rgba(216,200,184,0.16);
+    transform: translateY(-1px);
+  }
+  .tag-row i{ font-size: 13px; line-height:1; }
+  .tag-row i.icon-dark{
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 10px;
+  }
+  .project-link{
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--white);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top: 6px;
+    transition: color .3s var(--ease);
+  }
+  .project-link:hover{ color: var(--cream); }
+  .project-link svg{ width:14px; height:14px; transition: transform .35s var(--ease); }
+  .project-link:hover svg{ transform: translate(3px,-3px); }
+
+  @media (max-width: 1080px){
+    .project-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background: var(--cream-soft);
+    color: var(--ink);
+    padding: 120px 0;
+    text-align:center;
+  }
+  .contact .eyebrow{ color: var(--navy); justify-content:center; }
+  .contact .eyebrow::before{ background: var(--navy); }
+  .contact .section-title{ color: var(--ink); }
+  .contact-sub{
+    max-width: 52ch;
+    margin: 20px auto 40px;
+    color: #4a4638;
+    font-size: 17px;
+  }
+  .contact-actions{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background: var(--ink);
+    color: var(--white);
+    padding: 16px 30px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition: transform .3s var(--ease), background .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .btn-primary:hover{
+    background: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(6,11,36,0.22);
+  }
+  .btn-primary:active{ transform: translateY(0) scale(.97); box-shadow: none; }
+  .btn-secondary{
+    border: 1.5px solid rgba(6,11,36,0.35);
+    padding: 16px 30px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition: transform .3s var(--ease), border-color .3s var(--ease), background-color .3s var(--ease);
+  }
+  .btn-secondary:hover{
+    background: rgba(6,11,36,0.05);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .btn-secondary:active{ transform: translateY(0) scale(.97); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--ink);
+    padding: 32px 0;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap: 14px;
+  }
+  .footer-logo{
+    font-family: var(--display);
+    font-size: 20px;
+    color: var(--muted);
+  }
+  .footer-meta{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted-dim);
+    display:flex;
+    gap: 18px;
+    align-items:center;
+  }
+  .footer-meta a:hover{ color: var(--cream); }
+
+  @media (max-width: 860px){
+    .about-grid{ grid-template-columns: 1fr; gap: 40px; }
+    .project-grid{ grid-template-columns: 1fr; }
+    .hero-top{ padding: 22px; }
+  }
+
+  .btn-secondary[aria-disabled="true"]{ opacity:.45; pointer-events:none; }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .scroll-cue{ animation: none; }
+    html{ scroll-behavior: auto; }
+    .reveal{ opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" id="topo">
+  <video autoplay muted loop playsinline poster="assets/poster.jpg" id="heroVideo">
+    <source src="assets/Hero.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-top">
+    <div class="logo">LUCAS SANTOS<sup>®</sup></div>
+
+    <nav class="nav-links">
+      <a href="#topo">Home</a><span>/</span>
+      <a href="#sobre">Sobre</a><span>/</span>
+      <a href="#trajetoria">Trajetória</a><span>/</span>
+      <a href="#projetos">Projetos</a><span>/</span>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <a href="#contato" class="btn-hero">Fale comigo</a>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-name">LUCAS<br>SANTOS</div>
+    <div class="hero-role"><span>disponível para projetos</span>Full Stack<br>Developer</div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="eyebrow">quem eu sou</div>
+      <h2 class="section-title">DESENVOLVEDOR<br>FULL STACK</h2>
+      <p>Sou o Lucas — desenvolvedor full stack com projetos reais em produção, do front-end à infraestrutura. Trabalho tanto na interface quanto na API, no banco de dados e nas filas que fazem tudo funcionar por trás.</p>
+      <p>Já entreguei desde landing pages institucionais até sistemas com fila de mensageria, autenticação e integração com IA — sempre com foco em código limpo e deploy de verdade.</p>
+      <div class="chip-row">
+        <span class="chip"><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+        <span class="chip"><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+        <span class="chip"><i class="devicon-react-original colored"></i>React</span>
+        <span class="chip"><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+        <span class="chip"><i class="devicon-java-plain colored"></i>Java</span>
+        <span class="chip"><i class="devicon-postgresql-plain colored"></i>PostgreSQL</span>
+        <span class="chip"><i class="devicon-prisma-original icon-dark"></i>Prisma</span>
+        <span class="chip"><i class="devicon-docker-plain colored"></i>Docker</span>
+        <span class="chip"><i class="devicon-git-plain colored"></i>Git</span>
+      </div>
+    </div>
+    <div class="about-card reveal" style="transition-delay:.1s">
+      <div class="card-tab">sobre.json</div>
+      <ul>
+        <li><span>base:</span> <span>Brasil</span></li>
+        <li><span>foco:</span> <span>full stack engineering</span></li>
+        <li><span>stack:</span> <span>React, Node.js, TypeScript, Java</span></li>
+        <li><span>projetos:</span> <span>5 em produção / repositório público</span></li>
+        <li><span>status:</span> <span>disponível para novos projetos</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="trajetoria">
+  <div class="wrap">
+    <div class="eyebrow reveal">minha trajetória</div>
+    <h2 class="section-title reveal">DE ONDE VIM<br>PRA ONDE VOU</h2>
+  </div>
+
+  <div class="journey-road">
+    <svg class="journey-svg" viewBox="0 0 800 1560" preserveAspectRatio="none" aria-hidden="true">
+      <path class="road-guide" d="M140,100 C140,275 660,275 660,450 C660,625 140,625 140,800 C140,975 660,975 660,1150 C660,1325 140,1325 140,1500"/>
+      <path class="road-fill" id="roadFill" d="M140,100 C140,275 660,275 660,450 C660,625 140,625 140,800 C140,975 660,975 660,1150 C660,1325 140,1325 140,1500"/>
+    </svg>
+
+    <div class="milestone side-right reveal" style="top:6.41%; left:17.5%">
+      <div class="m-icon"><div class="m-glints"><span></span><span></span></div></div>
+      <div class="m-text">
+        <span class="m-date">2025</span>
+        <h3>Ciência da Computação</h3>
+        <p>Início da graduação em Ciência da Computação na PUC Minas.</p>
+      </div>
+    </div>
+
+    <div class="milestone side-left reveal" style="top:28.85%; left:82.5%">
+      <div class="m-icon"><div class="m-glints"><span></span><span></span></div></div>
+      <div class="m-text">
+        <span class="m-date">set/2025</span>
+        <h3>Suporte de T.I. &amp; Redes</h3>
+        <p>Estágio na EMATER-MG: instalação, manutenção e configuração de redes e sistemas.</p>
+      </div>
+    </div>
+
+    <div class="milestone side-right reveal" style="top:51.28%; left:17.5%">
+      <div class="m-icon"><div class="m-glints"><span></span><span></span></div></div>
+      <div class="m-text">
+        <span class="m-date">2025 · em paralelo</span>
+        <h3>Landing pages como autônomo</h3>
+        <p>Enquanto estagiava, comecei a desenvolver landing pages por conta própria para clientes.</p>
+      </div>
+    </div>
+
+    <div class="milestone side-left reveal" style="top:73.72%; left:82.5%">
+      <div class="m-icon"><div class="m-glints"><span></span><span></span></div></div>
+      <div class="m-text">
+        <span class="m-date">jun/2026</span>
+        <h3>Software Developer na Exxata</h3>
+        <p>Migrei para desenvolvimento full stack em produção na Exxata Suprimentos.</p>
+      </div>
+    </div>
+
+    <div class="milestone side-right reveal" style="top:96.15%; left:17.5%">
+      <div class="m-icon"><div class="m-glints"><span></span><span></span></div></div>
+      <div class="m-text">
+        <span class="m-date">hoje</span>
+        <h3>Bots &amp; sites institucionais</h3>
+        <p>Sigo na Exxata construindo bots de automação e sites institucionais para empresas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projetos">
+  <div class="wrap">
+    <div class="eyebrow reveal">trabalhos recentes</div>
+    <h2 class="section-title reveal">PROJETOS</h2>
+
+    <div class="project-grid">
+      <article class="project-card reveal">
+        <div class="project-tab"><span>exxata-suprimentos</span><span>2026</span></div>
+        <div class="project-thumb"><img src="assets/proj-exxata.png" alt="Landing page da Exxata Suprimentos" loading="lazy"></div>
+        <div class="project-body">
+          <h3>Exxata Suprimentos</h3>
+          <p>Landing page B2B em produção para gestão inteligente de suprimentos na construção civil e infraestrutura. Frontend na Vercel, API na Render e banco PostgreSQL no Supabase.</p>
+          <div class="tag-row">
+            <span><i class="devicon-react-original colored"></i>React</span>
+            <span><i class="devicon-typescript-plain colored"></i>TypeScript</span>
+            <span><i class="devicon-vitejs-plain colored"></i>Vite</span>
+            <span><i class="devicon-tailwindcss-plain colored"></i>Tailwind</span>
+            <span><i class="devicon-supabase-plain colored"></i>Supabase</span>
+          </div>
+          <a href="https://teste-exxata.vercel.app/" target="_blank" rel="noopener" class="project-link">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" style="transition-delay:.06s">
+        <div class="project-tab"><span>agencia-pulsing</span><span>2025</span></div>
+        <div class="project-thumb"><img src="assets/proj-pulsing.png" alt="Site institucional da agência Pulsing" loading="lazy"></div>
+        <div class="project-body">
+          <h3>Agência Pulsing</h3>
+          <p>Site institucional para uma agência de marketing digital, com serviços, cases, depoimentos e CTA direto para WhatsApp — voltado a decisores que buscam resultados mensuráveis.</p>
+          <div class="tag-row">
+            <span><i class="devicon-html5-plain colored"></i>HTML</span>
+            <span><i class="devicon-css3-plain colored"></i>CSS</span>
+            <span><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+          </div>
+          <a href="https://agenciapulsing.com.br/" target="_blank" rel="noopener" class="project-link">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" style="transition-delay:.12s">
+        <div class="project-tab"><span>disparador-whatsapp</span><span>2025</span></div>
+        <div class="project-thumb"><img src="assets/proj-whatsapp.png" alt="Repositório do Disparador de WhatsApp" loading="lazy"></div>
+        <div class="project-body">
+          <h3>Disparador de WhatsApp</h3>
+          <p>Plataforma de disparo de campanhas com API, filas em BullMQ/Redis e worker separado para envio via WhatsApp — arquitetura pensada para escalar API e processamento de forma independente.</p>
+          <div class="tag-row">
+            <span><i class="devicon-nodejs-plain colored"></i>Node.js</span>
+            <span><i class="devicon-express-original icon-dark"></i>Express</span>
+            <span><i class="devicon-prisma-original icon-dark"></i>Prisma</span>
+            <span><i class="devicon-postgresql-plain colored"></i>PostgreSQL</span>
+            <span><i class="devicon-redis-plain colored"></i>Redis</span>
+            <span><i class="devicon-react-original colored"></i>React</span>
+          </div>
+          <a href="https://github.com/LucasSilvasSantos/Disparador-Whatsapp-" target="_blank" rel="noopener" class="project-link">Ver repositório <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" style="transition-delay:.06s">
+        <div class="project-tab"><span>timeawards</span><span>2025</span></div>
+        <div class="project-thumb"><img src="assets/proj-timeawards.png" alt="Repositório do TimeAwards" loading="lazy"></div>
+        <div class="project-body">
+          <h3>TimeAwards</h3>
+          <p>Plataforma de gestão de tempo e produtividade com registro de atividades por texto, voz e OCR, IA para recomendações, gamificação e relatórios automáticos por e-mail.</p>
+          <div class="tag-row">
+            <span><i class="devicon-html5-plain colored"></i>HTML</span>
+            <span><i class="devicon-css3-plain colored"></i>CSS</span>
+            <span><i class="devicon-javascript-plain colored"></i>JavaScript</span>
+            <span><i class="devicon-java-plain colored"></i>Java</span>
+            <span>OCR</span>
+            <span>IA</span>
+          </div>
+          <a href="https://github.com/LucasSilvasSantos/TimeAwards" target="_blank" rel="noopener" class="project-link">Ver repositório <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project-card reveal" style="transition-delay:.12s">
+        <div class="project-tab"><span>aeds-2</span><span>2024</span></div>
+        <div class="project-thumb"><img src="assets/proj-aeds2.png" alt="Repositório de Algoritmos e Estruturas de Dados 2" loading="lazy"></div>
+        <div class="project-body">
+          <h3>Algoritmos e Estruturas de Dados 2</h3>
+          <p>Repositório de exercícios e trabalhos da disciplina de Algoritmos e Estruturas de Dados 2, com implementações em Java e C usadas como material de estudo e consulta.</p>
+          <div class="tag-row">
+            <span><i class="devicon-java-plain colored"></i>Java</span>
+            <span><i class="devicon-c-plain colored"></i>C</span>
+            <span>Estruturas de dados</span>
+          </div>
+          <a href="https://github.com/LucasSilvasSantos/Aeds-2" target="_blank" rel="noopener" class="project-link">Ver repositório <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="wrap">
+    <div class="eyebrow reveal">vamos conversar</div>
+    <h2 class="section-title reveal">TEM UM PROJETO<br>EM MENTE?</h2>
+    <p class="contact-sub reveal">Estou disponível para novos projetos e parcerias. Manda uma mensagem e vamos conversar sobre como transformar sua ideia em algo real.</p>
+    <div class="contact-actions reveal" style="transition-delay:.1s">
+      <a href="mailto:lucsantos820@gmail.com" class="btn-primary">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        Enviar e-mail
+      </a>
+      <a href="https://www.linkedin.com/in/lucas-silva-santos10/" target="_blank" rel="noopener" class="btn-secondary" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+      </a>
+      <a href="https://github.com/LucasSilvasSantos" target="_blank" rel="noopener" class="btn-secondary" aria-label="GitHub">
+        <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-logo">LUCAS SANTOS</div>
+    <div class="footer-meta">
+      <span id="year"></span>
+      <a href="mailto:lucsantos820@gmail.com" aria-label="E-mail"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+      <a href="https://www.linkedin.com/in/lucas-silva-santos10/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+      <a href="https://github.com/LucasSilvasSantos" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+      <a href="#topo">voltar ao topo ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = '© ' + new Date().getFullYear() + ' Lucas Santos';
+
+  // Scroll reveal — fade + slide up as sections enter the viewport
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }
+
+  // Respect reduced motion: pause background video
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const v = document.getElementById('heroVideo');
+    if (v) v.removeAttribute('autoplay');
+  }
+
+  // Journey road — draws in as the section scrolls through the viewport
+  (function () {
+    const road = document.getElementById('roadFill');
+    const section = document.querySelector('.journey-road');
+    if (!road || !section) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const length = road.getTotalLength();
+    road.style.strokeDasharray = length;
+
+    if (reducedMotion) {
+      road.style.strokeDashoffset = 0;
+      return;
+    }
+
+    let ticking = false;
+    function update() {
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = (vh - rect.top) / (rect.height + vh);
+      const clamped = Math.max(0, Math.min(1, progress));
+      road.style.strokeDashoffset = length * (1 - clamped);
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  })();
+</script>
+
+</body>
 </html>
